@@ -1,0 +1,56 @@
+1st open the vs code a folder.
+2nd crete crete django project using vscode  Terminal---(django-admin startproject ProjectName then enter ) 
+3rd then close the vs code and open the vs code under your created project.
+4th then open terminal and write (python manage.py runserver)
+5th open terminal create app under your project write(python manage.py startapp AppName)
+6th create urls.py file under app.
+7th then go to project urls.py file and copy the urls and pest same on the app urls.py py file.
+8th then check server is working or not, in terminal write(python manage.py runserver). Then go to browser  search(check urls/admin).it will show django admin interface
+----------------------------------------------------------------------------------------
+9th go to project urls.py file and add
+(import path,incloud
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include("AppName.urls"))
+]
+)
+
+10th go to app urls.py file and add
+(
+    from AppName import views
+
+urlpatterns = [
+    path('', views.index, name="home"),
+]
+)
+
+11th go to apps views.py file and add
+(
+    import render, HttpResponse
+
+# Create your views here.
+def index(request):
+    return HttpResponse("Well come to Django")
+)
+
+12th then run server and check
+13 Now create two folder static and template
+
+This is for static :-
+14 then go to project setting.py file and then go below and click on static link and copy the static code from browser and pest below like
+(STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/var/www/static/',
+])
+
+This is for template :-
+15 then copy (BASE_DIR / "static") and pest in template directory  'DIRS': [BASE_DIR / "templates"],
+
+16 now create a index.html file under template folder and create website, then go to views and add 
+def index(request):
+    return render(request,'index.html')
+
+Now we check Django deffalt database:-
+16 open terminal type python manage.py makemigrations, then again write python manage.py migrate
+
+17 then type in terminal(python manage.py createsuperuser) now set user id and password and login django database.
